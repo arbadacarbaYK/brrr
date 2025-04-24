@@ -5,3 +5,8 @@ compatibility_date = "2024-03-20"
 routes = [
   { pattern = "nfc-brrr.biz/api/proxy", zone_name = "nfc-brrr.biz" }
 ] 
+
+# wrangler.toml (wrangler v3.88.0^)
+[observability.logs]
+enabled = true
+
