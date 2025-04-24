@@ -15,7 +15,7 @@ export const DefaultAppState: IAppState = {
     lnurlWEnabled: true,
     namePrefix: 'BRRR',
     numberOfWallets: 2,
-    proxyUrl: 'proxy.php',
+    proxyUrl: 'https://nfc-brrr.biz/api/proxy',
     adminId: '',
   },
   parametersInvoice: {
