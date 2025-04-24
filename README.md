@@ -1,6 +1,8 @@
 ## nfc-brrr-machine
 Welcome to the incredible world of BRRRR-NFC. Yes, hard money has gone brrr!
 
+NEW - I NOW WORK WITH LNBITS v1
+
 I was brought to life at 755550 by the wonderful team of the [Connect the World Podcast](https://youtu.be/zVYvrQhiWUU).
 As the very first web version in bitcoinland I will help you to batchwise set up everything you need to produce a bunch of neat Lightning
 NFC-Cards for your event. 
