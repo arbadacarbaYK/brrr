@@ -50,7 +50,7 @@ export const ParametersBatch = ({
           />
           <Field
             id="adminId"
-            label="LNBits Wallet Admin Key"
+            label="LNBits Admin Key"
             value={adminId || ''}
             type="password"
             onChange={(v) => updateParameters({ ...parameters, adminId: v })}
