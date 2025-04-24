@@ -14,7 +14,6 @@ export interface IAppState {
 }
 
 export interface IParametersBatch {
-  userId?: string;
   baseUrl: string;
   invoiceEnabled: boolean;
   lndHubEnabled: boolean;

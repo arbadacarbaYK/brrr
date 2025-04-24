@@ -15,14 +15,13 @@ But that´s not enough, right? To be able to refill the card or see the balance 
 carrying an Import-Key for e.g. BlueWallet for each wallet. 
 Put the right(!) sticker on each card or flyer and your guests are set to use some juice- or beertaps!
 
-### Prerequisits
+### Prerequisites
 - Your node is well-connected and allows creation of wallets
-- LNBits v12+ is installed and in [clearnet](https://github.com/TrezorHannes/vps-lnbits#5-vps-install-lnbits)
-- The following LNBits extensions need to be installed
-  - User Manager
-  - (optional) LndHub
-  - (optional) LNURLp
-  - (optional) LNURLw
+- LNBits v1 is installed and in [clearnet](https://github.com/TrezorHannes/vps-lnbits#5-vps-install-lnbits)
+- The following LNBits extensions need to be installed:
+  - LndHub (optional, for wallet import in BlueWallet)
+  - LNURLp (optional, for receiving payments)
+  - LNURLw (optional, for making payments)
 
 ### What I will do for you
 - Create wallets and all links needed for each card 

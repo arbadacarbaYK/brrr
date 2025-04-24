@@ -7,34 +7,29 @@ export const createWallet = async (
   ph: ProxyHandler,
 ): Promise<IWalletInfo> => {
   try {
-    const { userId: adminUserId, adminId } = parametersBatch;
+    const { adminId: masterKey } = parametersBatch;
 
-    // create wallet
+    // create wallet using v1 API
     const responseWallet = await ph.post(
-      `/usermanager/api/v1/users`,
+      `/api/v1/wallets`,
       {
-        admin_id: adminUserId,
-        wallet_name: walletName,
-        user_name: window.crypto.randomUUID(),
-        email: '',
-        password: '',
+        name: walletName,
       },
-      adminId,
+      masterKey,
     );
     const walletData = await responseWallet.json();
 
-    // extract generated wallet info
-    const userId = walletData.id;
-    const walletId = walletData.wallets[0].id;
-    const adminKey = walletData.wallets[0].adminkey;
-    const inKey = walletData.wallets[0].inkey;
-    const adminUrlLnBits = `${ph.getBase()}/wallet?usr=${userId}&wal=${walletId}`;
+    // extract generated wallet info - v1 response structure
+    const walletId = walletData.id;
+    const adminKey = walletData.adminkey; // adminkey is correct in v1
+    const inKey = walletData.inkey; // inkey is correct in v1
+    const adminUrlLnBits = `${ph.getBase()}/wallet?wal=${walletId}`;
 
     return {
       adminId: adminKey,
       readKey: inKey,
       adminUrlLnBits,
-      userId,
+      userId: walletId, // In v1, wallet ID is used as user ID
       walletName,
     };
   } catch (e) {

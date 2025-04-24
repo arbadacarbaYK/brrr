@@ -27,7 +27,6 @@ export const ParametersBatch = ({
   updateWallets,
 }: IParametersBatchProps) => {
   const {
-    userId,
     baseUrl,
     namePrefix,
     invoiceEnabled,
@@ -48,13 +47,6 @@ export const ParametersBatch = ({
             label="My LNBits url"
             value={baseUrl}
             onChange={(v) => updateParameters({ ...parameters, baseUrl: v })}
-          />
-          <Field
-            id="userId"
-            label="LNBits Admin User ID"
-            value={userId || ''}
-            type="password"
-            onChange={(v) => updateParameters({ ...parameters, userId: v })}
           />
           <Field
             id="adminId"

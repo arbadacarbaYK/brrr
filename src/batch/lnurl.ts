@@ -5,12 +5,12 @@ import { enablePlugin } from './plugin';
 export const createLnurlW = async (
   parameters: IParametersLnurlW,
   adminId: string,
-  userId: string,
+  walletId: string,
   readKey: string,
   ph: ProxyHandler,
 ): Promise<string> => {
   try {
-    await enablePlugin('withdraw', userId, readKey, ph);
+    await enablePlugin('withdraw', walletId, adminId, ph);
     const responseLnurlw = await ph.post(
       `/withdraw/api/v1/links`,
       {
@@ -28,12 +28,12 @@ export const createLnurlW = async (
 export const createLnurlP = async (
   parameters: IParametersLnurlP,
   adminKey: string,
-  userId: string,
+  walletId: string,
   inKey: string,
   ph: ProxyHandler,
 ): Promise<string> => {
   try {
-    await enablePlugin('lnurlp', userId, inKey, ph);
+    await enablePlugin('lnurlp', walletId, adminKey, ph);
     const responseLnurlw = await ph.post(`/lnurlp/api/v1/links`, parameters, adminKey);
     return (await responseLnurlw.json()).lnurl;
   } catch (e) {

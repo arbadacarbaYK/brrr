@@ -8,7 +8,6 @@ export const DefaultAppState: IAppState = {
   batchRunning: false,
   currentWalletIndex: 0,
   parametersBatch: {
-    userId: '',
     baseUrl: 'https://lnbits.yourdomain.com',
     invoiceEnabled: false,
     lndHubEnabled: true,

@@ -5,7 +5,7 @@ import {
   IParametersLnurlW,
   IWalletInfo,
 } from '../interfaces';
-import * as QRCode from 'qrcode';
+import QRCode from 'qrcode';
 import ProxyHandler from '../util/post';
 import { createLnurlP, createLnurlW } from './lnurl';
 import { createWallet, getBalance } from './wallet';
@@ -13,8 +13,15 @@ import { enableLndHub } from './lndhub';
 import { createInvoice, payInvoice } from './invoice';
 import { LightningUrlPrefix } from '../defaults';
 
-const safeQr = async (value?: string): Promise<string | undefined> =>
-  value ? await QRCode.toDataURL(value) : undefined;
+const safeQr = async (value?: string): Promise<string | undefined> => {
+  if (!value) return undefined;
+  try {
+    return await QRCode.toDataURL(value);
+  } catch (e) {
+    console.error('Failed to generate QR code:', e);
+    return undefined;
+  }
+};
 
 export async function brrr(
   parametersBatch: IParametersBatch,
@@ -53,25 +60,25 @@ export async function brrr(
     // create the wallet
     onProgress(i, `Creating wallet ${walletName}`);
     let wallet = await createWallet(walletName, parametersBatch, ph);
-    const { adminId, readKey, userId } = wallet;
+    const { adminId, readKey, userId: walletId } = wallet;
 
     // enable lnurlp
     if (lnurlPEnabled) {
-      const lnUrlP = await createLnurlP(parametersLnurlP, adminId, userId, readKey, ph);
+      const lnUrlP = await createLnurlP(parametersLnurlP, adminId, walletId, readKey, ph);
       const lnUrlPQR = await safeQr(LightningUrlPrefix + lnUrlP);
       wallet = { ...wallet, lnUrlP, lnUrlPQR };
     }
 
     // enable lnurlw
     if (lnurlWEnabled) {
-      const lnUrlW = await createLnurlW(parametersLnurlW, adminId, userId, readKey, ph);
+      const lnUrlW = await createLnurlW(parametersLnurlW, adminId, walletId, readKey, ph);
       const lnUrlWQR = await safeQr(LightningUrlPrefix + lnUrlW);
       wallet = { ...wallet, lnUrlW, lnUrlWQR };
     }
 
     // enable BlueWallet import
     if (lndHubEnabled) {
-      const adminUrlLndHub = await enableLndHub(adminId, userId, readKey, ph);
+      const adminUrlLndHub = await enableLndHub(adminId, walletId, readKey, ph);
       const adminUrlLndHubQR = await safeQr(adminUrlLndHub);
       wallet = { ...wallet, adminUrlLndHub, adminUrlLndHubQR };
     }
