@@ -75,7 +75,6 @@ export interface IWalletInfo {
   lnUrlW?: string;
   lnUrlWQR?: string;
   readKey: string;
-  userId: string;
   walletName?: string;
 }
 

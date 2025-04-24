@@ -75,12 +75,10 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
         Thanks for using me!
       </p>
 
-      <h3>LNBits Admin key & User ID</h3>
+      <h3>LNBits Admin Key</h3>
       <p>
         Open LNbits and create a funding wallet for the cards. To the right you will find a section
-        called API-Info. If you click it, it will bring up the admin key. Your admin User ID can be
-        found by opening My Account from the top right user icon. The User ID can be made visible by
-        clicking on the eye icon after which you can copy it.
+        called API-Info. If you click it, it will bring up the admin key which you'll need to copy.
         <br />
         <b>Make sure this wallet has enough satoshis loaded before proceeding. </b>
       </p>

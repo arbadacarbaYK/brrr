@@ -60,7 +60,13 @@ export async function brrr(
     // create the wallet
     onProgress(i, `Creating wallet ${walletName}`);
     let wallet = await createWallet(walletName, parametersBatch, ph);
-    const { adminId, readKey, userId: walletId } = wallet;
+    const { adminId, readKey } = wallet;
+    
+    // Get wallet ID from the LNBits URL
+    const walletId = new URL(wallet.adminUrlLnBits).searchParams.get('wal');
+    if (!walletId) {
+      throw new Error('Failed to get wallet ID from LNBits URL');
+    }
 
     // enable lnurlp
     if (lnurlPEnabled) {

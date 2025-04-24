@@ -31,6 +31,6 @@ Put the right(!) sticker on each card or flyer and your guests are set to use so
 - *Soon: upload a design and order your cards online*
 
 ### Try it out
-A demo of the nfc-brrr-machine is available [here](https://arbadacarbayk.github.io/brrr/)), you can use this if you don't want to host it yourself.
+A demo of the nfc-brrr-machine is available at [brrr.slaapyhoofd.nl](https://brrr.slaapyhoofd.nl), you can use this if you don't want to host it yourself.
 
 ## Now let´s get your wallets ready and BRRRR some cards and stickers!

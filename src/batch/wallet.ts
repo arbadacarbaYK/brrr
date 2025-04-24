@@ -29,7 +29,6 @@ export const createWallet = async (
       adminId: adminKey,
       readKey: inKey,
       adminUrlLnBits,
-      userId: walletId, // In v1, wallet ID is used as user ID
       walletName,
     };
   } catch (e) {
