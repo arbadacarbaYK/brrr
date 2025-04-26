@@ -3,32 +3,36 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
+  output: {
+    filename: 'brrr.js',
+    path: path.resolve(__dirname, 'public'),
+    publicPath: '/',
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+  },
   module: {
     rules: [
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-  },
-  output: {
-    filename: 'brrr.js',
-    path: path.resolve(__dirname, 'public'),
-  },
-  plugins: [new HtmlWebpackPlugin({ template: './src/index.html', hash: true, inject: 'body' })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+    }),
+  ],
   devServer: {
     historyApiFallback: true,
     static: {
       directory: path.join(__dirname, 'public'),
-      publicPath: '/',
     },
     proxy: [
       {

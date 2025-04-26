@@ -1,6 +1,7 @@
 {
   "name": "brrr",
   "version": "0.1.0",
+  "homepage": "https://nfc-brrr.biz",
   "description": "Batch create lnurlw from lnbits",
   "main": "brrr.js",
   "scripts": {
