@@ -1,12 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+module.exports = (env) => ({
   entry: './src/index.tsx',
   output: {
     filename: 'brrr.js',
     path: path.resolve(__dirname, 'public'),
-    publicPath: '/',
+    publicPath: env.prod ? '/brrr/' : '/',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -43,4 +43,4 @@ module.exports = {
       },
     ],
   },
-};
+});
