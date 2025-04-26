@@ -34,13 +34,12 @@ module.exports = (env) => ({
     static: {
       directory: path.join(__dirname, 'public'),
     },
-    proxy: [
-      {
-        context: '/proxy.php',
-        target: 'https://[YOUR_DOMAIN]/proxy.php',
-        secure: false,
+    proxy: {
+      '/api/proxy': {
+        target: 'https://nfc-brrr.biz',
+        secure: true,
         changeOrigin: true,
       },
-    ],
+    },
   },
 });
